@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sloth Walk</title>
+    <script src="code/main.js" defer></script>
+    <style>
+        /* latin-ext */
+        @font-face {
+            font-family: 'Englebert';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(code/Englebert/Englebert-Regular.ttf) format('woff2');
+            unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        /* latin */
+        @font-face {
+            font-family: 'Englebert';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(code/Englebert/Englebert-Regular.ttf) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+
+        :root {
+            font-size: 230%;
+            line-height: 1;
+            font-family: 'Englebert', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #136F63;
+            position: relative;
+        }
+
+        #wrapper {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #grid {
+            gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(var(--size), 1fr);
+            width: 100%;
+            max-width: 680px;
+        }
+
+        .square {
+            background-color: #A8C686;
+            border-radius: 12px;
+            aspect-ratio: 1;
+            rotate: 0deg;
+            transition: rotate 0.3s;
+        }
+
+        .playable .square:not(.static):hover {
+            outline: 6px solid #25DBFF;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            user-drag: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        section {
+            position: absolute;
+            height: 100vh;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #136F63;
+            opacity: 1;
+            transition: bottom 1s;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+
+        .fade {
+            bottom: 100vh;
+        }
+
+        section div {
+            background: #A8C686;
+            color: white;
+            border-radius: 20px;
+            padding: 1ch;
+            max-width: 42ch;
+            margin: 1ch;
+            transform: rotate(2deg);
+        }
+
+        section p {
+            margin: 0.5rem 0;
+        }
+
+        #meg,
+        #sign {
+            font-size: 2rem;
+        }
+
+        #sign,
+        #click {
+            text-align: right;
+        }
+
+        #click {
+            font-size: 0.5rem;
+        }
+
+        section span {
+            font-size: 0.5em;
+        }
+
+        .icon {
+            position: absolute;
+            z-index: 100;
+            width: 10px;
+        }
+
+        #sloth {
+            transition: left 2s, top 2s;
+            z-index: 101;
+        }
+
+        #credit {
+            font-size: 0.7rem;
+            position: absolute;
+            padding: 8px;
+            bottom: 0;
+            right: 0;
+            color: #08312c;
+            transition: color 0.2s;
+        }
+
+        #credit:hover {
+            color: white;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* a {
+            color: #eeecac;
+        } */
+
+        a:hover {
+            color: #25DBFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="grid">
+            <img id="sloth" class="icon" src="code/img/sloth.png">
+            <img id="food" class="icon" src="code/img/food.png">
+        </div>
+    </div>
+    <section>
+        <div>
+            <p id="meg">yo meg!</p>
+            <p>merry xmas and happy new year :D</p>
+            <p>a little gift from me to you, it's a puzzling adventure with a sloth! They're looking for food!</p>
+            <p>enjoy!</p>
+            <p id="sign">love, j <span>xoxo</span></p>
+            <p id="click">(click anywhere to start)</p>
+        </div>
+    </section>
+    <p id="credit">Music "Rio Fresh" by <a href="https://pixabay.com/users/dayfox-29184718/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=119046">DayFox</a></p>
+</body>
+
+</html>
